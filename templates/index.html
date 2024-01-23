@@ -1,0 +1,57 @@
+<html lang="en-us">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Movie Site</title>
+  
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+  </head>
+  
+  <body>
+  
+    <h2>Data</h2>
+    <hr>
+
+        <label for="years">Year:</label>
+        <br>
+
+        <select name="year" id="year" onchange="optionYearChanged(this.value)"">
+          <option value="before"">Before 2000</option>
+          <option value="after">2000+</option>
+        </select>        
+        <div id="bar"></div>
+
+        <table id="example" class="display" width="100%"></table>
+
+
+
+
+        <label for="years">Director:</label>
+        <br>
+
+        <select name="director" id="director" onchange="optionDirectorChanged(this.value)"">
+          <option value="chaplin"">Charles Chaplin</option>
+          <option value="hitchcock">Alfred Hitchcock</option>
+          <option value="nolan">Christopher Nolan</option>
+          <option value="kurosawa">Akira Kurosawa</option>
+        </select>        
+        <div id="v-bar"></div>
+
+
+
+  <br>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+  <script src="https:////cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+  </body>
+  
+  </html>
