@@ -1,57 +1,193 @@
-<html lang="en-us">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Covid-19</title>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <style>
+       body {
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-color: #E8CD9B;
+            height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
 
-  <head>
-    <meta charset="UTF-8">
-    <title>Movie Site</title>
-  
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  
-  </head>
-  
-  <body>
-  
-    <h2>Data</h2>
-    <hr>
+        .header {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            height: 180px;
+            background: url("images/COVID-green.png") center/cover;
+            text-align: center;
+        }
 
-        <label for="years">Year:</label>
-        <br>
+        .container {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 1px;
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid #006400;
+            justify-content: space-between;
+        }
 
-        <select name="year" id="year" onchange="optionYearChanged(this.value)"">
-          <option value="before"">Before 2000</option>
-          <option value="after">2000+</option>
-        </select>        
-        <div id="bar"></div>
+        .column-2,
+        .column-3,
+        .column-4,
+        .column-5,
+        .column-6,
+        .column-7,
+        .column-8 {
+            box-sizing: border-box;
+            margin: 5px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
 
-        <table id="example" class="display" width="100%"></table>
+        .column-2 {
+            flex: 1 1 20%;
+        }
 
+        .column-3 {
+            flex: 1 1 75%;
+            height: 500px;
+            width: 910px;;
+        }
 
+        .column-4 {
+            flex: 1 1 20%;
+        }
 
+        .column-5 {
+            flex: 1 1 75%;
+            height: 500px;
+            width: 910px;;
+        }
 
-        <label for="years">Director:</label>
-        <br>
+        .column-6,
+        .column-7 {
+        height: 300px;
+        width: 650px;;
+        }
+        .column-8 {
+            flex: 1 1 80%;
+        }
 
-        <select name="director" id="director" onchange="optionDirectorChanged(this.value)"">
-          <option value="chaplin"">Charles Chaplin</option>
-          <option value="hitchcock">Alfred Hitchcock</option>
-          <option value="nolan">Christopher Nolan</option>
-          <option value="kurosawa">Akira Kurosawa</option>
-        </select>        
-        <div id="v-bar"></div>
+        /* Add more styling as needed */
 
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            
+        }
 
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
 
-  <br>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
 
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<!DOCTYPE html>
+<html lang="en">
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<head>
+        <!-- Leaflet CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin="" />
+    
+    
+        <!-- Leaflet JavaScript code -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+</head>
+<body>
 
-  <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-  <script src="https:////cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <div class="header"> Use the interactive charts below to explore the dataset
+    </div>
 
-  </body>
-  
-  </html>
+    <div class="container">
+        <div class="column-2">
+            <div class="dropdown">
+                    <div class="dropdown-content">
+                    <h5>Select Country:</h5>
+                   <!---- <select id="selDataset" onchange="optionChanged(this.value)"></select>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="column-3">
+            <!-- Your map content goes here -->
+            <div id="map" style="height: 100%"></div>
+            <script src="{{ url_for('static', filename='js/leaflet.conditionalLayer.js') }}"></script>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="column-4">
+            <div class="dropdown">
+                <label for="regions">Select WHO Region:</label>
+                <select name="region" id="region" onchange="optionRegionChanged(this.value)">
+                    <option value="Western Pacific">Western Pacific</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Americas">Americas</option>
+                    <option value="Africa">Africa</option>
+                    <option value="South-East Asia">South-East Asia</option>
+                    <option value="Eastern Mediterranean">Eastern Mediterranean</option>
+                  </select> 
+            </div>
+        </div>
+
+        <div class="column-5">
+            <!-- Your bubble chart content goes here -->
+            <div id="bubble" ></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="column-6">
+            <div class="dropdown">
+                
+               <div class="dropdown-content"></div>
+                    <div class="dropdown-content">
+                        <h5>Select Country:</h5>
+                        <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                </div>
+            </div>
+        </div>
+
+        <div id="sample-metadata", class="column-7">
+            <!-- bar chart content goes here -->
+            Bar Chart 
+        </div>
+    </div>
+
+    <div class="container column-8">
+        <!-- Add content for div 8 as needed -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</body>
+</html>
