@@ -17,3 +17,11 @@
 
   font-size: 26px;
 }
+/* Remove the default margin and padding from the body. */
+
+
+/* Set map, body, and html to 100% of the screen size. */
+#map{
+  height: 70%;
+  width: 100%
+}

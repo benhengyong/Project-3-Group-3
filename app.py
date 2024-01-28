@@ -51,13 +51,28 @@ def for_map():
 
     session = Session(engine)
     
-    results = session.query(country.Country, country.State, country.Lat, country.Long, country.Date,
-                           country.Confirmed, country.Deaths, country.Recovered, country.Active).all()
+    results = session.query(country.Country, country.State, country.Lat, country.Long,
+                           country.Confirmed, country.Deaths, country.Recovered, country.Active).filter(country.Date == "2020-07-27").all()
     
     results = [list(r) for r in results]
 
+    countryResults = [result[0] for result in results]
+    state = [result[1] for result in results]
+    lat = [result[2] for result in results]
+    long = [result[3] for result in results]
+    confirmed = [result[4] for result in results]
+    deaths = [result[5] for result in results]
+    recovered = [result[6] for result in results]
+
+
     map_results = {
-        "cases": results
+        "country": countryResults,
+        "state": state,
+        "lat": lat,
+        "long": long,
+        "confirmed": confirmed,
+        "deaths": deaths,
+        "recovered": recovered
     }
 
     session.close()
@@ -69,17 +84,28 @@ def for_map():
 #bubble chart that shows cases within WHO Region
 
 @app.route("/api/bubble/<region>")
-def for_linechart(region):
+def forlinechart(region):
 
     session = Session(engine)
     
     results = session.query(country.Country, country.State, country.Date,
-                           country.Confirmed, country.Deaths, country.Recovered, country.Active, country.WHORegion).filter(country.WHORegion==region).all()
+        country.Confirmed, country.Deaths, country.Recovered, country.Active, country.WHORegion).filter(country.Date == "2020-07-27").filter(country.WHORegion==region).all()
     
     results = [list(r) for r in results]
     
+    countryResults = [result[0] for result in results]
+    state = [result[1] for result in results]
+    confirmed = [result[3] for result in results]
+    deaths = [result[4] for result in results]
+    recovered = [result[5] for result in results]
+
+
     bubble_results = {
-        "cases": results
+        "country": countryResults,
+        "state": state,
+        "confirmed": confirmed,
+        "deaths": deaths,
+        "recovered": recovered
     }
 
     session.close()
@@ -95,22 +121,35 @@ def countrys(region):
     session = Session(engine)
     
     results = session.query(country.Country, country.State, country.Date,
-                           country.Confirmed, country.Deaths, country.Recovered, country.Active).filter(country.Country==region).all()
+        country.Confirmed, country.Deaths, country.Recovered, country.Active).filter(country.Country==region).filter(country.Date.like("%27")).all()
     
     results = [list(r) for r in results]
 
-    country_results = {
-        "table": results
+    countryResults = [result[0] for result in results]
+    state = [result[1] for result in results]
+    date = [result[2] for result in results]
+    confirmed = [result[3] for result in results]
+    deaths = [result[4] for result in results]
+    recovered = [result[5] for result in results]
+
+
+    bar_results = {
+        "country": countryResults,
+        "state": state,
+        "date": date,
+        "confirmed": confirmed,
+        "deaths": deaths,
+        "recovered": recovered
     }
 
     session.close()
 
-    return jsonify(country_results)
+    return jsonify(bar_results)
 
 
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
 
