@@ -1,27 +1,26 @@
 /* Additional styles specific to this example */
 .box {
-    width: 97%; /* Adjust the width of div 2 and div 3 */
-    height: 80px; /* Adjust the height of the dropdown div */
-    margin: 10px;
-    background-color: #d0d0d0; /* Light gray background color */
-    border: 2px solid #006400; /* Dark green border */
-    box-sizing: border-box;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  width: 97%; /* Adjust the width of div 2 and div 3 */
+  height: 80px; /* Adjust the height of the dropdown div */
+  margin: 10px;
+  background-color: #d0d0d0; /* Light gray background color */
+  border: 2px solid #006400; /* Dark green border */
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
  
-  .barbox {
-    margin: 10px;
-    border: 2px solid #006400; /* Dark green border */
-    box-sizing: border-box;
-    flex-direction: column;
-    justify-content: left;
-    align-items: center;
-    vertical-align: middle;
-    height: 400px;
-    max-width: 42%; /* Set maximum width to viewport width */
+.barbox {
+  margin: 10px;
+  border: 2px solid #006400; /* Dark green border */
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  vertical-align: middle;
+  height: 400px;
+  max-width: 42%; /* Set maximum width to viewport width */
 
 }
 
