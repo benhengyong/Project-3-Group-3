@@ -146,7 +146,15 @@ def countrys(region):
 
     return jsonify(bar_results)
 
-
+@app.route("/api/countrylist" , methods=['GET'])
+def countrylist():
+    session = Session(engine)
+    results = session.query(country.Country.distinct().label("country")).all()
+    results = [list(r) for r in results]
+    countryName = [result[0] for result in results]
+    countrylist = {"country": countryName }
+    session.close()
+    return jsonify(countrylist)
 
 
 if __name__ == "__main__":
