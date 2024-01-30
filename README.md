@@ -1,12 +1,17 @@
 # Project-3-Group-3
-Overview:
+**Overview:**
 Analysis on the Covid distribution across the world during the time of 22nd January 2020 to 27th July 2020.
 
-Purpose: 
+**Purpose:**
 Analyse Covid cases data on different countries with the aim to identify trends how geoloogical distances affected covid spread, as well as which regions and countries were most affected during the sepcific timeframe.
 
-Ethical considerations:
+**Ethical considerations:**
 Ethical Considerations for this project were copying of the provided dataset and its further analysis and utilisation of the dataset. Issues of owner acknowledgement, proper data manipulation and justifiable data visualisation adn usage were discussed before the creation of the project.
+
+**Data Source:**
+COVID-19 Dataset by DEVAKUMAR K. P
+https://www.kaggle.com/datasets/imdevskp/corona-virus-report?resource=download
+
 
 Contains Covid database and files to display this covid database visualising on an html.
 The CSV files are lcoated within the data folder.
