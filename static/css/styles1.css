@@ -58,7 +58,6 @@
   .header {
     grid-column: 1 / -1; /* This spans across all columns */
     height: 180px;
-    background-image: url('/templates/images/COVID-green.png');
     display: flex;
     flex-direction: column;
     justify-content: center;
