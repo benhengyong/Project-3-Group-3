@@ -157,6 +157,8 @@ function buildCountryChart(country) {
       var layout = {
         title: 'COVID-19 Statistics',
         barmode: 'stack',  // Stacked bar chart
+        width: 500,
+        height: 390
       };
       var config = { responsive: true };
       Plotly.newPlot('sample-metadata', plotData, layout, config);

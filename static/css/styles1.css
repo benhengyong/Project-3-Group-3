@@ -20,7 +20,7 @@
   align-items: center;
   vertical-align: middle;
   height: 400px;
-  max-width: 42%; /* Set maximum width to viewport width */
+  max-width: 50%; /* Set maximum width to viewport width */
 
 }
 
@@ -58,7 +58,7 @@
   .header {
     grid-column: 1 / -1; /* This spans across all columns */
     height: 180px;
-    background: url('images/COVID-green.png') center/cover;
+    background-image: url('/templates/images/COVID-green.png');
     display: flex;
     flex-direction: column;
     justify-content: center;
