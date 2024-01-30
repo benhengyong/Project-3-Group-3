@@ -7,9 +7,8 @@ let myMap = L.map("map", {
 });
 
 // Adding the tile layer
-L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-  maxZoom: 17,
-  attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 }).addTo(myMap);
 
 // Get the data with d3.
@@ -85,8 +84,6 @@ init()
 function init() {
   // Fetch the country list and populate the dropdown
   d3.json("/api/countrylist").then((data) => {
-    // Log the data to the console
-    console.log(data);
       // Select the dropdown element by ID
     dropdown = d3.select("#selDataset");
     // Populate the dropdown with options from the data
@@ -110,9 +107,7 @@ function fetchData(region)
 }
 //buildCountryChart('India')
 function buildCountryChart(country) {
-    console.log(country);
     d3.json(`/api/bar/${country}`).then((data) => {
-      console.log(data);
       const months = {1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'May',6:'Jun',7:'Jul'};
         // Check if data is an array before using map
         if (Array.isArray(data.Total_confirmed)) {
@@ -125,7 +120,6 @@ function buildCountryChart(country) {
                 month: months[data.month[index]],
             }));
     };
-    console.log(data['date'])
       var trace1 = {
         type: 'bar',
         x: data['date'],
