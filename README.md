@@ -1,6 +1,6 @@
 # Project-3-Group-3
 
-Contains Covid database and files to display this covid database visualing on an html.
+Contains Covid database and files to display this covid database visualising on an html.
 The CSV files are lcoated within the data folder.
 CovidData.ipynb takes the csv files, edit column names and joins together and loads it into an sql database 'covid.db'
 
