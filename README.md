@@ -19,7 +19,7 @@ CovidData.ipynb takes the csv files, edit column names and joins together and lo
 
 App.py takes the sql database and uses sqlalchemy and Flask to create api links that returns JSON formatted version of the sql data, with added filters for each different api.
 
-**To run the html, open VSS code and use command 'python app.py'**
+**To run the html, download the complete Project-3-Group-3 repository, open VSS code, navigate terminal location to the repository folder and use command 'python app.py'**
 
 Note: some tile layers for the leaflet geomap may not run on some computers, if the geomap does not run you may change the tilelayer used in the app.js.
 
