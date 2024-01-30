@@ -24,8 +24,12 @@
 <body>
   <!-- Your HTML content here -->
   <div class="header">
+    <img src="{{ url_for('static', filename='images/COVID-green.png') }}" alt="Green Virus"
+      height = "180"
+      width="950"
+    />
   </div>
-  <div class="box"> <h4> Use the interactive charts below to explore the dataset</h4>
+  <div class="box"> <h2> Use the interactive charts below to explore the dataset</h2>
   </div>
   <div class="box" id="mapContainer">
     <div id="map" style="height: 100%"></div>
@@ -55,7 +59,7 @@
        <!-- Add more countries as needed -->
     </select>
     </div>
-  <div id="sample-metadata", class="barbox"> bar chart
+  <div id="sample-metadata", class="barbox"> 
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
