@@ -21,7 +21,7 @@ App.py takes the sql database and uses sqlalchemy and Flask to create api links 
 
 **To run the html, open VSS code and use command 'python app.py'**
 
-Note: some tile layers for the leaflet geomap may not run on different computers, if the geomap does not run you may change the tilelayer used in the app.js.
+Note: some tile layers for the leaflet geomap may not run on some computers, if the geomap does not run you may change the tilelayer used in the app.js.
 
 example tilelayer: 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
