@@ -4,7 +4,7 @@ Contains Covid database and files to display this covid database visualising on 
 The CSV files are lcoated within the data folder.
 CovidData.ipynb takes the csv files, edit column names and joins together and loads it into an sql database 'covid.db'
 
-App.py takes the sql database and uses sqlalchemy adn Flask to create api links that returns JSON formatted version of the sql data, with added filters for each different api.
+App.py takes the sql database and uses sqlalchemy and Flask to create api links that returns JSON formatted version of the sql data, with added filters for each different api.
 
 To run the html, open VSS code and use command 'python app.py'
 
