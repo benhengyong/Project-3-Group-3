@@ -20,8 +20,10 @@ CovidData.ipynb takes the csv files, edit column names and joins together and lo
 App.py takes the sql database and uses sqlalchemy and Flask to create api links that returns JSON formatted version of the sql data, with added filters for each different api.
 
 **To run the html, download the complete Project-3-Group-3 repository, open VSS code, navigate terminal location to the repository folder and use command 'python app.py'**
+**or**
+**click this link:** https://benhengyong.pythonanywhere.com/
 
-Note: some tile layers for the leaflet geomap may not run on some computers, if the geomap does not run you may change the tilelayer used in the app.js.
+Note: some tile layers for the leaflet geomap may not run on some computers, if the geomap does not run you may change the tilelayer used in the app.js. Additionally, select a WHO Region to display second Graph.
 
 example tilelayer: 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
